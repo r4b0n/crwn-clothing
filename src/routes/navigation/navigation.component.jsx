@@ -24,7 +24,7 @@ const Navigation = () => {
           <Link onClick={handleNavClick} className='nav-link' to='/shop'>
             Shop
           </Link>
-          <Link onClick={handleNavClick} className='nav-link' to='/sign-in'>
+          <Link onClick={handleNavClick} className='nav-link' to='/auth'>
             Sign In
           </Link>
         </div>
