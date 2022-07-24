@@ -8,7 +8,7 @@ import {
   signInWithGooglePopup,
   signInWithGoogleRedirect,
   signInUserFromEmailPassword,
-  createUserDocFromAuth,
+  //createUserDocFromAuth,
 } from '../../utils/firebase/firebase.utils';
 
 import FormInput from '../form-input/form-input.component';
@@ -24,16 +24,15 @@ const SignInForm = () => {
     const fetchUser = async () => {
       const response = await getRedirectResult(auth);
       if (response) {
-        const userDocRef = await createUserDocFromAuth(response.user);
-        console.log('user doc ref: ', userDocRef);
+        //const userDocRef = await createUserDocFromAuth(response.user);
+        //console.log('user doc ref: ', userDocRef);
       }
     };
     fetchUser();
   }, []);
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserDocFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -46,7 +45,7 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInUserFromEmailPassword(email, password);
+      await signInUserFromEmailPassword(email, password);
       resetFormFields();
     } catch (err) {
       if (err.code === 'auth/wrong-password') {
