@@ -1,13 +1,31 @@
 .category-container {
-  min-width: 30%;
+  min-width: 100%;
   height: 240px;
-  flex: 1 1 auto;
+  flex: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  margin: 0 7.5px 15px;
+  margin: 0 0 15px;
   overflow: hidden;
+  @media (min-width: 576px) {
+    // RED (SM)
+  }
+  @media (min-width: 768px) {
+    // GREEN (MD)
+    flex: 1 1 auto;
+    min-width: 30%;
+    margin: 0 7.5px 15px;
+  }
+  @media (min-width: 992px) {
+    // BLUE (LG)
+  }
+  @media (min-width: 1200px) {
+    // YELLOW (XL)
+  }
+  @media (min-width: 1400px) {
+    // PURPLE (XXL)
+  }
 
   &:hover {
     cursor: pointer;
@@ -28,10 +46,24 @@
 
   &:first-child {
     margin-right: 7.5px;
+    margin-left: 0;
   }
 
   &:last-child {
-    margin-left: 7.5px;
+    margin-left: 0;
+    margin-right: 0;
+    @media (min-width: 768px) {
+      // GREEN (MD)
+      margin-left: 7.5px;
+    }
+  }
+
+  &:nth-child(3) {
+    margin-right: 0;
+  }
+
+  &:nth-child(4) {
+    margin-left: 0;
   }
 
   .category-bg-img {
