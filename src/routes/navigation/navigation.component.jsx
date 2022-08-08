@@ -14,17 +14,18 @@ import { SignOutUser } from '../../utils/firebase/firebase.utils';
 import './navigation.styles.scss';
 
 const Navigation = () => {
+  const { currentUser } = useContext(UserContext);
+  const { isCartOpen, showCartIcon, setShowCartIcon } = useContext(CartContext);
   const handleNavClick = (e) => {
     let nav_links = document.querySelectorAll('.nav-link');
     for (var i = 0; i < nav_links.length; i++) {
       nav_links[i].classList.remove('active');
     }
     e.target.classList.add('active');
+    if (!showCartIcon) {
+      setShowCartIcon(true);
+    }
   };
-
-  const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
-
   return (
     <Fragment>
       <nav>
@@ -44,7 +45,7 @@ const Navigation = () => {
               Sign In
             </Link>
           )}
-          <CartIcon />
+          {showCartIcon && <CartIcon />}
         </div>
         {isCartOpen && <CartDropdown />}
       </nav>

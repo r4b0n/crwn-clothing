@@ -6,8 +6,14 @@ import { CartContext } from '../../contexts/cart.context';
 import './checkout.styles.scss';
 
 const Checkout = () => {
-  const { cartItems, cartTotal, isCartOpen, setIsCartOpen } =
-    useContext(CartContext);
+  const {
+    cartItems,
+    cartTotal,
+    isCartOpen,
+    setIsCartOpen,
+    showCartIcon,
+    setShowCartIcon,
+  } = useContext(CartContext);
   let nav_links = document.querySelectorAll('.nav-link');
   for (var i = 0; i < nav_links.length; i++) {
     nav_links[i].classList.remove('active');
@@ -16,7 +22,10 @@ const Checkout = () => {
     if (isCartOpen) {
       setIsCartOpen(false);
     }
-  }, [isCartOpen, setIsCartOpen]);
+    if (showCartIcon) {
+      setShowCartIcon(false);
+    }
+  }, [isCartOpen, setIsCartOpen, showCartIcon, setShowCartIcon]);
   return (
     <div className='checkout-container'>
       <div className='checkout-header'>
