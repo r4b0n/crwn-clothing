@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
 import { CartContext } from '../../contexts/cart.context';
@@ -6,7 +6,17 @@ import { CartContext } from '../../contexts/cart.context';
 import './checkout.styles.scss';
 
 const Checkout = () => {
-  const { cartItems, cartTotal } = useContext(CartContext);
+  const { cartItems, cartTotal, isCartOpen, setIsCartOpen } =
+    useContext(CartContext);
+  let nav_links = document.querySelectorAll('.nav-link');
+  for (var i = 0; i < nav_links.length; i++) {
+    nav_links[i].classList.remove('active');
+  }
+  useEffect(() => {
+    if (isCartOpen) {
+      setIsCartOpen(false);
+    }
+  }, [isCartOpen, setIsCartOpen]);
   return (
     <div className='checkout-container'>
       <div className='checkout-header'>
