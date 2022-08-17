@@ -1,25 +1,2 @@
-.products-container {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  column-gap: 20px;
-  row-gap: 20px;
-  @media (min-width: 576px) {
-    // RED (SM)
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: 768px) {
-    // GREEN (MD)
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (min-width: 992px) {
-    // BLUE (LG)
-  }
-  @media (min-width: 1200px) {
-    // YELLOW (XL)
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (min-width: 1400px) {
-    // PURPLE (XXL)
-    grid-template-columns: repeat(5, 1fr);
-  }
+.shop-container {
 }

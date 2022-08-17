@@ -20,9 +20,20 @@ a {
   box-sizing: border-box;
 }
 
-.footer-logo {
-  width: 100%;
+footer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-top: 2rem;
+  .footer-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .footer-logo-txt {
+    font-family: 'Babylonica', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 }
