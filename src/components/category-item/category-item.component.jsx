@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import './category-item.styles.scss';
 
 const CategoryItem = ({ category }) => {
   const { title, imageUrl } = category;
   return (
-    <div className='category-container'>
+    <Link to={`/shop/${title}`} className='category-container'>
       <div
         className='category-bg-img'
         style={{
@@ -14,7 +15,7 @@ const CategoryItem = ({ category }) => {
         <h2>{title}</h2>
         <p>Shop Now</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
