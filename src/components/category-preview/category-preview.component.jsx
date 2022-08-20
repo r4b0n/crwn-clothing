@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import ProductCard from '../product-card/product-card.component';
 
 import './category-preview.styles.scss';
@@ -10,7 +11,10 @@ const CategoryPreview = ({ title, products }) => {
           textTransform: 'uppercase',
         }}
       >
-        <span className='title'>{title}</span>
+        <Link to={title} className='title'>
+          {title}
+          <i class='fa-brands fa-draft2digital fa-xs'></i>
+        </Link>
       </h2>
       <div className='preview'>
         {products
