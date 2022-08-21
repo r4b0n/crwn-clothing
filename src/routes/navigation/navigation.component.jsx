@@ -11,13 +11,13 @@ import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
 import { SignOutUser } from '../../utils/firebase/firebase.utils';
 
-import './navigation.styles.scss';
+import { Nav, Logo, NavLinks, NavLink } from './navigation.styles';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
   const { isCartOpen, showCartIcon, setShowCartIcon } = useContext(CartContext);
   const handleNavClick = (e) => {
-    let nav_links = document.querySelectorAll('.nav-link');
+    let nav_links = document.querySelectorAll('.gaYMAF');
     for (var i = 0; i < nav_links.length; i++) {
       nav_links[i].classList.remove('active');
     }
@@ -28,27 +28,27 @@ const Navigation = () => {
   };
   return (
     <Fragment>
-      <nav>
-        <Link onClick={handleNavClick} className='logo' to='/'>
+      <Nav>
+        <Logo onClick={handleNavClick} to='/'>
           <CrwnLogo />
-        </Link>
-        <div className='nav-links'>
-          <Link onClick={handleNavClick} className='nav-link' to='/shop'>
+        </Logo>
+        <NavLinks>
+          <NavLink onClick={handleNavClick} to='/shop'>
             Shop
-          </Link>
+          </NavLink>
           {currentUser ? (
-            <span className='nav-link active' onClick={SignOutUser}>
+            <NavLink as='span' className='active' onClick={SignOutUser}>
               Sign Out
-            </span>
+            </NavLink>
           ) : (
-            <Link onClick={handleNavClick} className='nav-link' to='/auth'>
+            <NavLink onClick={handleNavClick} to='/auth'>
               Sign In
-            </Link>
+            </NavLink>
           )}
           {showCartIcon && <CartIcon />}
-        </div>
+        </NavLinks>
         {isCartOpen && <CartDropdown />}
-      </nav>
+      </Nav>
       <Outlet />
     </Fragment>
   );
